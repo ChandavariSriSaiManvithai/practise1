@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ON/OFF Toggle Box</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: white; /* initial state */
+      border: 2px solid black;
+      margin-bottom: 20px;
+    }
+
+    #controls button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #onBtn.active {
+      background-color: red;
+      color: white;
+    }
+
+    #offBtn.active {
+      background-color: gray;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <div id="controls">
+    <button id="onBtn">ON</button>
+    <button id="offBtn">OFF</button>
+  </div>
+
+  <script>
+    const box = document.getElementById("box");
+    const onBtn = document.getElementById("onBtn");
+    const offBtn = document.getElementById("offBtn");
+
+    onBtn.addEventListener("click", () => {
+      box.style.backgroundColor = "yellow";
+      onBtn.classList.add("active");
+      offBtn.classList.remove("active");
+    });
+
+    offBtn.addEventListener("click", () => {
+      box.style.backgroundColor = "white";
+      offBtn.classList.add("active");
+      onBtn.classList.remove("active");
+    });
+  </script>
+</body>
+</html>

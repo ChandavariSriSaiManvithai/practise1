@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Books Data</h2>
+
+<table>
+    <thead>
+        <tr id="headRow"></tr>
+    </thead>
+    <tbody id="body"></tbody>
+</table>
+
+<script>
+
+fetch("https://raw.githubusercontent.com/edupoly/mongodb-data-sets/main/books.json")
+.then(response => response.json())
+.then(data => {
+
+    // Create table headers
+    let headRow = document.getElementById("headRow");
+    let keys = Object.keys(data[0]);
+
+    keys.forEach(key => {
+        let th = document.createElement("th");
+        th.innerText = key;
+        headRow.appendChild(th);
+    });
+
+    // Create table rows
+    let body = document.getElementById("body");
+
+    data.forEach(book => {
+        let tr = document.createElement("tr");
+        Object.values(book).forEach(value => {
+            let td = document.createElement("td");
+            td.innerText = value;
+            tr.appendChild(td);
+        });
+
+        body.appendChild(tr);
+    });
+
+});
+
+</script>
+
+</body>
+</html>

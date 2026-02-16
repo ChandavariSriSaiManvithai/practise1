@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const products = [
+
+{ name: "Shirt", price: 20 },
+
+{ name: "Shoes", price: 50 },
+
+{ name: "Hat", price: 15 }
+
+];
+
+
+const result = products
+.reduce((acc, curr) => acc + curr, 0)
+
+.filter(p => p.price > 10)
+
+.map(p => p.price)
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      padding: 30px;
+      text-align: left; /* everything left aligned */
+    }
+
+    .form-row {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: inline-block;
+      width: 90px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 260px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="file"] {
+      vertical-align: middle;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 5px 0;
+    }
+
+    #addBtn {
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    #azBtn {
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    #search {
+      margin-top: 10px;
+      padding: 8px;
+      width: 300px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      display: block; /* left aligned */
+    }
+
+    #cards {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffeb3b; /* yellow */
+      border: 2px solid #d32f2f; /* red border */
+      border-radius: 8px;
+      padding: 12px;
+      width: 280px;
+      position: relative;
+      text-align: left;
+    }
+
+    .card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      float: right;
+      margin-left: 10px;
+    }
+
+    .card p {
+      margin: 6px 0;
+    }
+
+    .deleteBtn {
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      position: absolute;
+      top: 6px;
+      right: 6px;
+    }
+
+    .editBtn {
+      background: #2196f3;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Add Contact</h2>
+
+  <div class="form-row">
+    <label>Name:</label>
+    <input id="name" type="text" />
+  </div>
+
+  <div class="form-row">
+    <label>Number:</label>
+    <input id="number" type="text" />
+  </div>
+
+  <div class="form-row">
+    <label>Email:</label>
+    <input id="email" type="email" />
+  </div>
+
+  <div class="form-row">
+    <label>Image:</label>
+    <input id="image" type="file" accept="image/*" />
+  </div>
+
+  <div class="form-row">
+    <button id="addBtn">Add Contact</button>
+  </div>
+
+  <!-- Sort button above search bar -->
+  <div style="margin-bottom: 10px;">
+    <button id="azBtn" title="Sort A–Z">🔤</button>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <input type="text" id="search" placeholder="Search a contact">
+  </div>
+
+  <div id="cards"></div>
+
+  <script>
+    const nameInput = document.getElementById("name");
+    const numberInput = document.getElementById("number");
+    const emailInput = document.getElementById("email");
+    const imageInput = document.getElementById("image");
+    const addBtn = document.getElementById("addBtn");
+    const searchInput = document.getElementById("search");
+    const cards = document.getElementById("cards");
+    const azBtn = document.getElementById("azBtn");
+
+    addBtn.addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      const number = numberInput.value.trim();
+      const email = emailInput.value.trim();
+      const file = imageInput.files[0];
+
+      if (!name || !number) return;
+
+      const card = document.createElement("div");
+      card.className = "card";
+      card.setAttribute("data-name", name.toLowerCase());
+
+      const img = document.createElement("img");
+      img.src = file ? URL.createObjectURL(file) : "https://via.placeholder.com/60";
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "×";
+      deleteBtn.className = "deleteBtn";
+      deleteBtn.onclick = () => card.remove();
+
+      const editBtn = document.createElement("button");
+      editBtn.textContent = "Edit";
+      editBtn.className = "editBtn";
+      editBtn.onclick = () => {
+        nameInput.value = name;
+        numberInput.value = number;
+        emailInput.value = email;
+        imageInput.value = "";
+        card.remove();
+      };
+
+      card.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Number:</strong> ${number}</p>
+        <p><strong>Email:</strong> ${email || "N/A"}</p>
+      `;
+      card.appendChild(img);
+      card.appendChild(deleteBtn);
+      card.appendChild(editBtn);
+      cards.appendChild(card);
+
+      nameInput.value = "";
+      numberInput.value = "";
+      emailInput.value = "";
+      imageInput.value = "";
+      nameInput.focus();
+    });
+
+    searchInput.addEventListener("input", () => {
+      const term = searchInput.value.toLowerCase();
+      const allCards = document.querySelectorAll(".card");
+      allCards.forEach(card => {
+        const name = card.getAttribute("data-name");
+        card.style.display = name.includes(term) ? "block" : "none";
+      });
+    });
+
+    azBtn.addEventListener("click", () => {
+      const allCards = Array.from(document.querySelectorAll(".card"));
+      allCards.sort((a, b) => {
+        const nameA = a.getAttribute("data-name");
+        const nameB = b.getAttribute("data-name");
+        return nameA.localeCompare(nameB);
+      });
+      cards.innerHTML = "";
+      allCards.forEach(card => cards.appendChild(card));
+    });
+  </script>
+
+</body>
+</html>

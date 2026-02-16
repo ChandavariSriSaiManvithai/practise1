@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Students</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: pink;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+      width: 250px;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-top: 30px;
+      padding-left: 0;
+    }
+
+    li {
+      color: red;
+      font-size: 18px;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Add Students</h2>
+  <input type="text" id="studentName" placeholder="Enter student name">
+  <button id="addBtn">Add Student</button>
+
+  <ul id="studentList"></ul>
+
+  <script>
+    const input = document.getElementById("studentName");
+    const button = document.getElementById("addBtn");
+    const list = document.getElementById("studentList");
+
+    button.addEventListener("click", () => {
+      const name = input.value.trim();
+      if (name) {
+        const li = document.createElement("li");
+        li.textContent = name;
+        list.appendChild(li);
+        input.value = ""; // clear input
+        input.focus();    // focus back for next entry
+      }
+    });
+  </script>
+
+</body>
+</html>
+

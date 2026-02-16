@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Multiple Images</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #imageContainer {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    #imageContainer img {
+      max-width: 300px;
+      border: 2px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Add Image</h2>
+  <input type="text" id="imageUrl" placeholder="Paste image URL here">
+  <button id="addImageBtn">Add Image</button>
+
+  <div id="imageContainer"></div>
+
+  <script>
+    const input = document.getElementById("imageUrl");
+    const button = document.getElementById("addImageBtn");
+    const container = document.getElementById("imageContainer");
+
+    button.addEventListener("click", () => {
+      const url = input.value.trim();
+      if (url) {
+        const img = document.createElement("img");
+        img.src = url;
+        img.alt = "User added image";
+        container.appendChild(img);
+        input.value = ""; // clear input after adding
+      }
+    });
+  </script>
+
+</body>
+</html>

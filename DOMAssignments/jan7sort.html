@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="sform" onsubmit="handleSubmit(event)">
+        Full Name:
+        <br>
+        <input type="text" name="full">
+        <br>
+        Gender:
+        <br>
+        <input type="radio" name="gender" value="F" id="female"><label for="female">:Female</label>
+        <input type="radio" name="gender" value="M"><label>:Male</label>
+        <input type="radio" name="gender" value="O"><label>:Others</label>
+        <br>
+        Technology:
+        <br>
+
+        <input type="checkbox" name="technology" value="js">:Javascript
+        <input type="checkbox" name="technology" value="rjs">:ReactJS
+        <input type="checkbox" name="technology" value="ajs">:Angular
+        <input type="checkbox" name="technology" value="njs">:NodeJS
+        <br>
+        Address:
+        <br>
+
+        <textarea name="addres"></textarea>
+        <br>
+        <button>Show Student</button>
+    </form>
+    <h1>Entered Text:<span id="d1"></span></h1>
+    <table id="tab" border="1">
+        <tr>
+            <th> fullname</th>
+            <th>gender</th>
+            <th>technologies</th>
+            <th>address</th>
+        </tr>
+    </table>
+
+    <script>
+        var newStudent = {
+            fullname:"",
+            gender: "",
+            technologies: [],
+            address:""
+        }
+        function handleSubmit(ev){
+            ev.preventDefault()
+      var  nam=document.sform.full.value
+      newStudent.fullname=nam
+
+      var addr=document.sform.addres.value
+      newStudent.address=addr
+
+      var gn=document.sform.gender.value
+      newStudent.gender=gn
+
+      document.sform.technology.forEach(function(el){
+        if(el.checked){
+            newStudent.technologies.push(el.value)
+        }
+      })
+    console.log(newStudent)
+      var row=document.createElement("tr")
+
+      for(var i in newStudent){
+        var d=document.createElement("td")
+        d.innerText=newStudent[i]
+        row.appendChild(d)
+        }
+        document.getElementById("tab").appendChild(row)
+    }
+    </script>
+</body>
+
+</html>

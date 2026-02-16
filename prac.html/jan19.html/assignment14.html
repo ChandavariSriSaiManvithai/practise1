@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      padding: 30px;
+      text-align: left;
+    }
+
+    .form-row {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: inline-block;
+      width: 100px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 260px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 5px 5px 10px 0;
+    }
+
+    #addBtn {
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    #sortAsc, #sortDesc {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .editBtn {
+      background: #ffeb3b;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .deleteBtn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Add Contact Details</h2>
+
+  <div class="form-row">
+    <label>FullName:</label>
+    <input id="fullname" type="text" />
+  </div>
+
+  <div class="form-row">
+    <label>ContactNo:</label>
+    <input id="contactno" type="text" />
+  </div>
+
+  <div class="form-row">
+    <label>EmailId:</label>
+    <input id="emailid" type="email" />
+  </div>
+
+  <button id="addBtn">Add Details</button>
+  <button id="sortAsc">Sort A–Z</button>
+  <button id="sortDesc">Sort Z–A</button>
+
+  <table id="contactTable">
+    <thead>
+      <tr>
+        <th>FullName</th>
+        <th>ContactNo</th>
+        <th>EmailId</th>
+        <th>Modify</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const fullnameInput = document.getElementById("fullname");
+    const contactnoInput = document.getElementById("contactno");
+    const emailidInput = document.getElementById("emailid");
+    const addBtn = document.getElementById("addBtn");
+    const sortAscBtn = document.getElementById("sortAsc");
+    const sortDescBtn = document.getElementById("sortDesc");
+    const tableBody = document.querySelector("#contactTable tbody");
+
+    addBtn.addEventListener("click", () => {
+      const name = fullnameInput.value.trim();
+      const number = contactnoInput.value.trim();
+      const email = emailidInput.value.trim();
+
+      if (!name || !number || !email) return;
+
+      const row = document.createElement("tr");
+      row.setAttribute("data-name", name.toLowerCase());
+
+      row.innerHTML = `
+        <td>${name}</td>
+        <td>${number}</td>
+        <td>${email}</td>
+        <td><button class="editBtn">Edit</button></td>
+        <td><button class="deleteBtn">Delete</button></td>
+      `;
+
+      // Edit functionality
+      row.querySelector(".editBtn").onclick = () => {
+        fullnameInput.value = name;
+        contactnoInput.value = number;
+        emailidInput.value = email;
+        row.remove();
+      };
+
+      // Delete functionality
+      row.querySelector(".deleteBtn").onclick = () => {
+        row.remove();
+      };
+
+      tableBody.appendChild(row);
+
+      fullnameInput.value = "";
+      contactnoInput.value = "";
+      emailidInput.value = "";
+      fullnameInput.focus();
+    });
+
+    function sortTable(order = "asc") {
+      const rows = Array.from(tableBody.querySelectorAll("tr"));
+      rows.sort((a, b) => {
+        const nameA = a.getAttribute("data-name");
+        const nameB = b.getAttribute("data-name");
+        return order === "asc" ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+      });
+      tableBody.innerHTML = "";
+      rows.forEach(row => tableBody.appendChild(row));
+    }
+
+    sortAscBtn.addEventListener("click", () => sortTable("asc"));
+    sortDescBtn.addEventListener("click", () => sortTable("desc"));
+  </script>
+
+</body>
+</html>

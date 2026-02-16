@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- REQUIRED: RxJS CDN -->
+    <script src="https://unpkg.com/rxjs@7/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+<body>
+
+<button id="clicker" style="width: 300px;height:60px">
+    Click here
+</button>
+
+<script>
+    const mybutton = document.getElementById("clicker");
+
+    rxjs.fromEvent(mybutton, "click")
+        .pipe(
+            rxjs.operators.throttleTime(5000),
+
+            rxjs.operators.tap(() => {
+                mybutton.disabled = true;
+                console.log("button disabled...");
+            }),
+
+            rxjs.operators.scan(acc => acc + 1, 0),
+
+            rxjs.operators.map(count => ({
+                count: count,
+                color: count % 2 === 0 ? "red" : "green",
+                text: `Clicked: ${count}`   // FIXED
+            })),
+
+            rxjs.operators.tap(data => {
+                mybutton.style.backgroundColor = data.color;
+                mybutton.textContent = data.text;
+                mybutton.style.color = "white";
+
+                console.log(`Count is ${data.count}. Re-enabling in 5s`);
+
+                setTimeout(() => {
+                    mybutton.disabled = false;
+                    console.log("button enabled");
+                }, 5000);
+            })
+        )
+        .subscribe();
+</script>
+
+</body>
+</html>

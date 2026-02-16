@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RxJS AJAX</title>
+
+    <!-- RxJS CDN (NO integrity) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.5.7/rxjs.umd.min.js"></script>
+</head>
+
+<body>
+<button id="d1">click me</button>
+<script>
+    var ob2=rxjs.fromEvent(document.getElementById("d1"),"click")
+    ob2
+    .pipe(
+        rxjs.throttleTime(5000)
+    )
+    
+    .subscribe((ev)=>{
+        console.log(ev)
+    })
+    // // Ajax observable
+    // var ob1 = rxjs.ajax.ajax("https://dummyjson.com/products")
+    //     .pipe(
+
+    //         // Convert response into stream
+    //         rxjs.operators.switchMap((res) => {
+    //             return rxjs.from(res.response.products);
+    //         }),
+
+    //         // Filter products by price
+    //         rxjs.operators.filter((product) => {
+    //             if (product.price > 10) {
+    //                 return true;
+    //             } else {
+    //                 return false;
+    //             }
+    //         })
+
+    //     );
+
+    // // ------------------------------------
+    // // Subscribe to final output
+    // // ------------------------------------
+    // ob1.subscribe((product) => {
+    //     console.log(product);
+    // });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="d">0</h1>
+  
+    <script>
+        var c=0
+        var t1=null
+        var flag="pause"
+
+        function start(){
+            t1=setInterval(function(){
+                c++
+                document.getElementById("d").innerText=c
+            },500)
+            function toggle(){
+                if(flag=='pause'){
+                    start()
+                    flag="play"
+                }
+                if (flag=='play')
+                     clearInterval(t1)
+                     flag="pause"
+            }
+        }
+    </script>
+
+</body>
+</html>

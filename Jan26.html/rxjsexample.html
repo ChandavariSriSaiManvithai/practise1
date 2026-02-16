@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/rxjs@7/dist/bundles/rxjs.umd.min.js"></script>
+
+</head>
+<body>
+    <button id="bt">Manvi</button>
+    <h1>Hello</h1>
+    <script>
+       console.log(rxjs);
+       var ob=rxjs.fromEvent(document.getElementById("bt"),"click")
+       ob.subscribe(function(){console.log("Ela undi idi");})
+
+    
+        console.log("first line")
+        setTimeout(function(){console.log("second line:");},6000)
+        console.log("third line")
+        console.log("fourth line");
+        setTimeout(function(){console.log("fifth line");},2000)
+        console.log("sixth line")
+        </script>
+</body>
+</html>

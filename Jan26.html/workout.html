@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        h3{
+            color: white;
+        }
+        body{
+            background-color: #E5E5E5;
+        }
+        #para{
+            display: flex;
+            justify-content: flex-start;
+            align-items: start;
+            vertical-align: left;
+            width: 50%;
+            font-size: 18px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #pic{
+            display:flex;
+            justify-content: flex-end;
+            align-items: end;
+            vertical-align: right;
+            width:50%;
+
+        }
+        #menu{
+            display:none;
+        }
+        #nav{
+            width: 100%;
+            height:80px;
+            background-color: rgb(40, 40, 106);
+            display:flex;
+            padding-right: 30px;
+            justify-content: flex-end;
+            align-items: center;
+            vertical-align: right;
+            font-family:'Times New Roman', Times, serif;
+            font-size: 20px;
+            margin: 2px solid black;
+            justify-content: space-between;
+    
+
+        }
+        #list{
+            display:flex;
+            gap: 20px;
+         
+        }
+       #list li{
+        list-style: none;
+        color: white;
+        padding:8px 12px;
+    
+       }
+#list li:hover{
+    /* margin: 2px solid black;
+    box-shadow: 100px; */
+    /* color:  */
+    cursor:pointer;
+    background-color: rgb(65, 57, 125);
+    border-radius:5px;
+    box-shadow: 20%;
+}
+/* RESPONSIVENESS */
+@media screen and (max-width:600px)
+{   #nav{
+        flex-direction: row;
+        justify-content: space-between;
+        padding:0 20px;
+
+    }
+    #list{
+        display:none;
+    }
+
+    #menu{
+        display:block;
+        color:white;
+        font-size:24px;
+        cursor:pointer;
+
+    }
+    #text{
+        flex-direction: column;
+    }
+    #para{
+        width:100%;
+        margin: 2px solid black;
+        flex-direction: column;
+
+    }
+    #pic{
+        width: 100%;
+        flex-direction: column;
+    }
+}
+#text{
+    background-color: #E5E5E5;
+    width: 100%;
+    height: 500px; 
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-sizing: border-box;
+    padding:40px;
+}
+    #text img{
+    opacity: 0.9   /* 0 = invisible, 1 = full */
+}
+@media screen and (max-width:1000px)
+/* {   #nav{
+        flex-direction: row;
+        justify-content: space-between;
+        padding:0 20px;
+
+    }
+    #list{
+        display:none;
+    }
+
+    #menu{
+        display:block;
+        color:white;
+        font-size:24px;
+        cursor:pointer;
+
+    } */
+ {   #text{
+        flex-direction: column;
+    }
+    #para{
+        width:100%;
+        margin: 2px solid black;
+        flex-direction: column;
+
+    }
+    #pic{
+        width: 100%;
+        flex-direction: column;
+    }
+ }
+#text{
+    background-color: #E5E5E5;
+    width: 100%;
+    height: 500px; 
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-sizing: border-box;
+    padding:40px;
+}
+    #text img{
+    opacity: 0.9   /* 0 = invisible, 1 = full */
+}
+
+
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <h3>Fitness Tracker</h3>
+            <ul id="list">
+                <li><b>Home</b></li>
+                <li><b>Diet Plans</b></li>
+                <li><b>Workout Routines</b></li>
+                <li><b>Progress Tracker</b></li>
+                <li><b>About Us</b></li>
+                <li><b>Contact Details</b></li>
+
+            </ul>
+     <i class="bi bi-three-dots-vertical" id="menu"></i>
+    </div>
+    <div id="text">
+        <p id="para">“Being healthy isn’t expensive. Being sick is.”</p>
+       <p id="para"></p>
+        <p id="para">A healthy lifestyle is about balance, not restrictions. Choosing nutritious food, staying active, and managing stress are key elements of long-term wellness. Consistency matters more than perfection. When healthy habits become part of daily life, they lead to lasting physical and mental well-being</p>
+         <img src="https://wl-brightside.cf.tsp.li/resize/728x/jpg/d56/30a/e9a0745a999ad8dca9f8426778.jpg" width="100%"id="pic" >
+
+    </div>
+  
+    
+</body>
+</html>

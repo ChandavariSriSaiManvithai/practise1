@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Toggle Button Assignment</title>
+  <style>
+    #toggleBtn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: white;
+      border: 2px solid #333;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    #status {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <button id="toggleBtn">Toggle</button>
+  <span id="status">false</span>
+
+  <script>
+    const button = document.getElementById("toggleBtn");
+    const statusText = document.getElementById("status");
+
+    button.addEventListener("click", () => {
+      if (statusText.textContent === "false") {
+        statusText.textContent = "true";
+        button.style.backgroundColor = "white";
+      } else {
+        statusText.textContent = "false";
+        button.style.backgroundColor = "white";
+      }
+    });
+  </script>
+</body>
+</html>

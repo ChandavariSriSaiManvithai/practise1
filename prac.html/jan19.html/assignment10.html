@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      padding: 30px;
+    }
+
+    .form-row {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: inline-block;
+      width: 90px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 260px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="file"] {
+      vertical-align: middle;
+    }
+
+    #addBtn {
+      padding: 10px 16px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Cards layout: stack and wrap beside/below */
+    #cards {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffeb3b; /* yellow */
+      border: 2px solid #d32f2f; /* red border */
+      border-radius: 8px;
+      padding: 12px;
+      width: 280px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .card img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .card-details p {
+      margin: 4px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Form -->
+  <div class="form-row">
+    <label for="name">Name:</label>
+    <input id="name" type="text" placeholder="Enter name" />
+  </div>
+
+  <div class="form-row">
+    <label for="number">Number:</label>
+    <input id="number" type="text" placeholder="Enter phone number" />
+  </div>
+
+  <div class="form-row">
+    <label for="email">Email:</label>
+    <input id="email" type="email" placeholder="Enter email" />
+  </div>
+
+  <div class="form-row">
+    <label for="image">Image:</label>
+    <input id="image" type="file" accept="image/*" />
+  </div>
+
+  <div class="form-row">
+    <button id="addBtn">Add Contact</button>
+  </div>
+
+  <!-- Cards container -->
+  <div id="cards"></div>
+
+  <script>
+    const nameInput = document.getElementById("name");
+    const numberInput = document.getElementById("number");
+    const emailInput = document.getElementById("email");
+    const imageInput = document.getElementById("image");
+    const addBtn = document.getElementById("addBtn");
+    const cards = document.getElementById("cards");
+
+    addBtn.addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      const number = numberInput.value.trim();
+      const email = emailInput.value.trim();
+      const file = imageInput.files[0];
+
+      // Require at least name and number (matches typical assignment behavior)
+      if (!name || !number) return;
+
+      // Create card
+      const card = document.createElement("div");
+      card.className = "card";
+
+      // Image (optional)
+      let imgEl = null;
+      if (file) {
+        const imgURL = URL.createObjectURL(file);
+        imgEl = document.createElement("img");
+        imgEl.src = imgURL;
+        imgEl.alt = "Contact image";
+      }
+
+      // Details
+      const details = document.createElement("div");
+      details.className = "card-details";
+      details.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Number:</strong> ${number}</p>
+        <p><strong>Email:</strong> ${email || "N/A"}</p>
+      `;
+
+      // Assemble card
+      if (imgEl) card.appendChild(imgEl);
+      card.appendChild(details);
+      cards.appendChild(card);
+
+      // Clear inputs for next entry
+      nameInput.value = "";
+      numberInput.value = "";
+      emailInput.value = "";
+      imageInput.value = "";
+      nameInput.focus();
+    });
+  </script>
+</body>
+</html>

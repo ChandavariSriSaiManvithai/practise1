@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zomato Clone</title>
+<style>
+  /* reset some default styles */
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+  body { background-color: #fff; color: #333; }
+
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #c4002f;  /* Zomato red */
+    color: white;
+  }
+
+  header .logo { font-size: 24px; font-weight: bold; }
+
+  header .search-bar input {
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
+  }
+
+  header .icons span {
+    margin-left: 15px;
+    cursor: pointer;
+  }
+
+  /* Banner */
+  .banner {
+    width: 100%;
+    height: 250px;
+    background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  /* Categories */
+  .categories {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  .category {
+    text-align: center;
+  }
+  .category img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+    border: 2px solid #c4002f;
+  }
+
+  /* Restaurant cards */
+  .restaurants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+  .restaurant {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .restaurant:hover { transform: scale(1.05); }
+  .restaurant img { width: 100%; height: 120px; object-fit: cover; }
+  .restaurant .info { padding: 10px; }
+  .restaurant .info h3 { font-size: 18px; margin-bottom: 5px; }
+  .restaurant .info p { font-size: 14px; color: #666; }
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">Zomato</div>
+  <div class="search-bar"><input type="text" placeholder="Search for restaurants or dishes..."></div>
+  <div class="icons">
+    <span>👤</span>
+    <span>🛒</span>
+  </div>
+</header>
+
+<!-- Banner -->
+<div class="banner">
+  Delicious Food Delivered!
+</div>
+
+<!-- Categories -->
+<div class="categories">
+  <div class="category">
+    <img src="https://images.unsplash.com/photo-1606755962773-6fbc109fc6e2?auto=format&fit=crop&w=80&q=80">
+    <p>Pizza</p>
+  </div>
+  <div class="category">
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=80&q=80">
+    <p>Burger</p>
+  </div>
+  <div class="category">
+    <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=80&q=80">
+    <p>Sushi</p>
+  </div>
+</div>
+
+<!-- Restaurants -->
+<div class="restaurants">
+  <div class="restaurant">
+    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80">
+    <div class="info">
+      <h3>Pizza Palace</h3>
+      <p>Italian • 30-40 mins • ⭐ 4.5</p>
+    </div>
+  </div>
+  <div class="restaurant">
+    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80">
+    <div class="info">
+      <h3>Burger King</h3>
+      <p>Fast Food • 20-30 mins • ⭐ 4.2</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

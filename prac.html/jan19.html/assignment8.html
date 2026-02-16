@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Like and Dislike Button</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      color: white;
+    }
+
+    #likeBtn {
+      background-color: green;
+    }
+
+    #dislikeBtn {
+      background-color: red;
+    }
+
+    .count {
+      font-size: 20px;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Like and Dislike Button</h2>
+
+  <div>
+    <button id="likeBtn" class="btn">Like</button>
+    <span id="likeCount" class="count">0</span>
+  </div>
+
+  <div>
+    <button id="dislikeBtn" class="btn">Dislike</button>
+    <span id="dislikeCount" class="count">0</span>
+  </div>
+
+  <script>
+    const likeBtn = document.getElementById("likeBtn");
+    const dislikeBtn = document.getElementById("dislikeBtn");
+    const likeCount = document.getElementById("likeCount");
+    const dislikeCount = document.getElementById("dislikeCount");
+
+    let likes = 0;
+    let dislikes = 0;
+
+    likeBtn.addEventListener("click", () => {
+      likes++;
+      likeCount.textContent = likes;
+    });
+
+    dislikeBtn.addEventListener("click", () => {
+      dislikes++;
+      dislikeCount.textContent = dislikes;
+    });
+  </script>
+
+</body>
+</html>

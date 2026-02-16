@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const quotes = [
+    {
+        quote: "The only way to do great work is to love what you do.",
+        explanation: "This quote by Steve Jobs emphasizes the importance of passion in achieving excellence in one's work."
+    },
+    {
+        quote: "Innovation distinguishes between a leader and a follower.",
+        explanation: "Another quote from Steve Jobs, highlighting the critical role of innovation in leadership and market differentiation."
+    },
+    {
+        quote: "Stay hungry, stay foolish.",
+        explanation: "A famous line from Steve Jobs' Stanford commencement speech, encouraging continuous learning and unconventional thinking."
+    }
+];
+
+const ul = document.getElementById("d");
+
+quotes.forEach(function(item){
+    const li = document.createElement("li");
+
+    const qu = document.createElement("h1");
+    qu.innerText = item.quote;
+    qu.style.cursor = "pointer";
+
+    const p = document.createElement("p");
+    p.innerText = item.explanation;
+    p.style.display = "none"; // 🔴 hide initially
+
+    qu.onclick = function () {
+        // hide all explanations
+        document.querySelectorAll("li p").forEach(function(el){
+            el.style.display = "none";
+        });
+
+        // show only clicked one
+        p.style.display = "block";
+    };
+
+    li.appendChild(qu);
+    li.appendChild(p);
+    ul.appendChild(li);
+});
+</script>
+
+</body>
+</html>
