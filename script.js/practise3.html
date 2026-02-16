@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="list" ></ul>
+    <script>  
+    const arr = ["Red", "Blue", "Green"];
+    const ul = document.getElementById("list");
+    arr.forEach(item => {
+    const li = document.createElement("li");
+    li.innerHTML = item;  
+    ul.appendChild(li);
+});
+
+
+        
+    </script>
+</body>
+
+</html>

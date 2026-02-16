@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+<table id="female" border="1">
+  <tr>
+    <th>First Name</th>
+    <th>Age</th>
+    <th>City</th>
+    <th>Salary</th>
+  </tr>
+</table>
+
+<script>
+var female = [
+  { firstname: "praveen", age: 36,  city: "hyd", salary: 10000 },
+  { firstname: "srikanth",  age: 32,  city: "bengaluru", salary: 20000 },
+  { firstname: "pradeep", age: 21,  city: "hyd", salary: 30000 },
+  { firstname: "mounika",  age: 20,  city: "nalgonda", salary: 30000 },
+  { firstname: "nikhil", age: 22, city: "guntur", salary: 2000 },
+  { firstname: "riya", age: 14,  city: "indore", salary: 40000 }
+];
+female.forEach(function(e){
+    var ntr=document.createElement("tr");
+    var nametd=document.createElement("td");
+        nametd.innerText=e.firstname;
+ ntr.appendChild(nametd)
+        var agetd=document.createElement("td");
+        agetd.innerText=e.age
+        ntr.appendChild(agetd)
+
+        var citytd=document.createElement("td");
+        citytd.innerText=e.city;
+        ntr.appendChild(citytd)
+
+        var salarytd=document.createElement("td")
+        salarytd.innerText=e.salary;
+
+       
+        ntr.appendChild(salarytd)
+        document.getElementById("female").appendChild(ntr)
+    
+})
+     </script>
+</body>
+</html>

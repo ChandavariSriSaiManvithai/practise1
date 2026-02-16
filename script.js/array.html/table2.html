@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>People UI</title>
+  <style>
+    .card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 250px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="peopleContainer"></div>
+
+  <script>
+    var people = [
+      { firstname: "praveen", lastname: "gubbala", age: 36, gender: "male", city: "hyd", salary: 10000 },
+      { firstname: "srikanth", lastname: "gubbala", age: 32, gender: "male", city: "bengaluru", salary: 20000 },
+      { firstname: "pradeep", lastname: "reddy", age: 21, gender: "male", city: "hyd", salary: 30000 },
+      { firstname: "mounika", lastname: "mudiraj", age: 20, gender: "female", city: "nalgonda", salary: 30000 },
+      { firstname: "nikhil", lastname: "m", age: 22, gender: "male", city: "guntur", salary: 2000 },
+      { firstname: "riya", lastname: "bhadouria", age: 14, gender: "female", city: "indore", salary: 40000 }
+    ];
+
+    var container = document.getElementById("peopleContainer");
+
+    people.forEach(function(person) {
+      var card = document.createElement("div");
+      card.className = "card";
+
+      var name = document.createElement("h3");
+      name.textContent = person.firstname + " " + person.lastname;
+
+      var age = document.createElement("p");
+      age.textContent = "Age: " + person.age;
+
+      var gender = document.createElement("p");
+      gender.textContent = "Gender: " + person.gender;
+
+      var city = document.createElement("p");
+      city.textContent = "City: " + person.city;
+
+      var salary = document.createElement("p");
+      salary.textContent = "Salary: ₹" + person.salary;
+
+      card.appendChild(name);
+      card.appendChild(age);
+      card.appendChild(gender);
+      card.appendChild(city);
+      card.appendChild(salary);
+
+      container.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>

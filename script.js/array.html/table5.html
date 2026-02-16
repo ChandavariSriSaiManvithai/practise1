@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <table id="female">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>age</th>
+            <th>city</th>
+            <th>salary</th>
+        </tr>
+    </table>
+    <table id="male">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>age</th>
+            <th>city</th>
+            <th>salary</th>
+        </tr>
+    </table>
+<script>
+    var people = [
+      { firstname: "praveen", lastname: "gubbala", age: 36, gender: "male", city: "hyd", salary: 10000 },
+      { firstname: "srikanth", lastname: "gubbala", age: 32, gender: "male", city: "bengaluru", salary: 20000 },
+      { firstname: "pradeep", lastname: "reddy", age: 21, gender: "male", city: "hyd", salary: 30000 },
+      { firstname: "mounika", lastname: "mudiraj", age: 20, gender: "female", city: "nalgonda", salary: 30000 },
+      { firstname: "nikhil", lastname: "m", age: 22, gender: "male", city: "guntur", salary: 2000 },
+      { firstname: "riya", lastname: "bhadouria", age: 14, gender: "female", city: "indore", salary: 40000 }
+    ];
+    var femaletable=document.getElementById("female")
+    var maletable=document.getElementById("male")
+       people.forEach(function(person) {
+      var tr = document.createElement("tr");
+
+      var tdFirst = document.createElement("td");
+      tdFirst.textContent = person.firstname;
+
+      var tdLast = document.createElement("td");
+      tdLast.textContent = person.lastname;
+
+      var tdage= document.createElement("td")
+      tdage.textContent=person.age;
+
+      var tdCity=document.createElement("td")
+      tdCity.textContent=person.city;
+
+      var tdSalary=document.createElement("td")
+      tdSalary.textContent=person.salary;
+
+      tr.appendChild(tdFirst)
+      tr.appendChild(tdLast)
+      tr.appendChild(tdage)
+      tr.appendChild(tdCity)
+      tr.appendChild(tdSalary)
+
+      if(person[i].gender==="female"){
+        femaletable.appendChild(tr)
+      }
+      else{
+        maletable.appendChild(tr)
+      }     
+    }); 
+</body>
+</html>

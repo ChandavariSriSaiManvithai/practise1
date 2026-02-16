@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Students Table</title>
+</head>
+<body>
+
+  <table border="1" id="st">
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Place</th>
+    </tr>
+  </table>
+
+  <script>
+    var students = [
+      { name: 'jaya', gender: 'female', place: 'gachibowli' },
+      { name: 'dasu', gender: 'male', place: 'kphb' },
+      { name: 'swati', gender: 'female', place: 'pune' },
+      { name: 'pallavi', gender: 'female', place: 'assam' },
+      { name: 'kiran', gender: 'male', place: 'kondapur' },
+      { name: 'thirumala', gender: 'male', place: 'madhapur' },
+      { name: 'priya', gender: 'female', place: 'hitech' }
+    ];
+
+    var table = document.getElementById("st");
+    students.forEach(function(student) {
+      var tr = document.createElement("tr");
+      var tdName = document.createElement("td");
+      tdName.textContent = student.name;
+      var tdGender = document.createElement("td");
+      tdGender.textContent = student.gender;
+      var tdPlace = document.createElement("td");
+      tdPlace.textContent = student.place;
+      tr.appendChild(tdName);
+      tr.appendChild(tdGender);
+      tr.appendChild(tdPlace);
+      table.appendChild(tr);
+    });
+  </script>
+
+</body>
+</html>

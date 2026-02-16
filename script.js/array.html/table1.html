@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Tables</title>
+</head>
+<body>
+  <table border="1" id="allTable">
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Place</th>
+    </tr>
+  </table>
+  <table border="1" id="femaleTable">
+    <tr>
+      <th>Name</th>
+      <th>Place</th>
+    </tr>
+  </table>
+  <table border="1" id="maleTable">
+    <tr>
+      <th>Name</th>
+      <th>Place</th>
+    </tr>
+  </table>
+
+  <script>
+    var students = [
+      { name: 'jaya', gender: 'female', place: 'gachibowli' },
+      { name: 'dasu', gender: 'male', place: 'kphb' },
+      { name: 'swati', gender: 'female', place: 'pune' },
+      { name: 'pallavi', gender: 'female', place: 'assam' },
+      { name: 'kiran', gender: 'male', place: 'kondapur' },
+      { name: 'thirumala', gender: 'male', place: 'madhapur' },
+      { name: 'priya', gender: 'female', place: 'hitech' }
+    ];
+
+    var allTable = document.getElementById("allTable");
+    var femaleTable = document.getElementById("femaleTable");
+    var maleTable = document.getElementById("maleTable");
+
+    students.forEach(function(student) {
+      var trAll = document.createElement("tr");
+
+      var tdName = document.createElement("td");
+      tdName.textContent = student.name;
+
+      var tdGender = document.createElement("td");
+      tdGender.textContent = student.gender;
+
+      var tdPlace = document.createElement("td");
+      tdPlace.textContent = student.place;
+
+      trAll.appendChild(tdName);
+      trAll.appendChild(tdGender);
+      trAll.appendChild(tdPlace);
+
+      allTable.appendChild(trAll);
+      var tr = document.createElement("tr");
+
+      var nameTd = document.createElement("td");
+      nameTd.textContent = student.name;
+
+      var placeTd = document.createElement("td");
+      placeTd.textContent = student.place;
+
+      tr.appendChild(nameTd);
+      tr.appendChild(placeTd);
+
+      if (student.gender === "female") {
+        femaleTable.appendChild(tr);
+      } else {
+        maleTable.appendChild(tr);
+      }
+    });
+  </script>
+
+</body>
+</html>
